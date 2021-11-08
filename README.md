@@ -1,6 +1,7 @@
 # string_transformation
 --first N character
 SELECT LEFT('ABCDEFG', 3);
+
 ![image](https://user-images.githubusercontent.com/89623051/140747863-56c9b0d5-582d-4eca-8bdb-a08be858876a.png)
 
 
@@ -10,6 +11,7 @@ SELECT
   LEFT(description, 51) AS short_description
 FROM rentals.film
 WHERE film_id = 14;
+
 ![image](https://user-images.githubusercontent.com/89623051/140748354-62fa6fd9-e07d-4872-b010-681bfdd2035b.png)
 
 ---last N characters
@@ -17,6 +19,7 @@ SELECT RIGHT('ABCDEFG', 3);
 
 ---substring by position
 SELECT SUBSTRING('12345ABC9', 6, 3);
+
 ![image](https://user-images.githubusercontent.com/89623051/140748758-122814ee-0817-4f55-8f75-8e9f4d96c82d.png)
 
 --character length
@@ -32,6 +35,7 @@ FROM rentals.film_list;
 
 ---starting position of text
 SELECT POSITION('a' in '12345a');
+
 ![image](https://user-images.githubusercontent.com/89623051/140749197-55f98ec1-a8b0-487b-87df-82610cbcbb5a.png)
 
 --What position does the word ‘Astronaut’ have in the description from the film called ANGELS LIFE?
@@ -55,6 +59,7 @@ SELECT
   short_description,
   LOWER(short_description) as lowercase_short_description
 FROM film_id_14;
+
 ![image](https://user-images.githubusercontent.com/89623051/140750066-293c35c5-fef6-47bf-b676-db6789c62e44.png)
 
 --Using a subquery, show the first 20 characters from the first time ‘Shark’ is mentioned in the description field and also the upper case version for film_id = 14
@@ -73,6 +78,7 @@ FROM (
 
 --title case
 select INITCAP('hello world!');
+
 ![image](https://user-images.githubusercontent.com/89623051/140751195-e04457e2-b77f-4ba3-aeef-7d94b6eb5911.png)
 
 --Using sequential CTEs show the first and last 17 characters from the description field and also the title case version for film_id = 14
@@ -96,6 +102,7 @@ title_case_text AS
   FROM text_input
 )
 SELECT * FROM title_case_text;
+
 ![image](https://user-images.githubusercontent.com/89623051/140751693-6e7e6686-0012-4ff0-8c56-9a9b15ef2eb9.png)
 
 --formatting string
@@ -126,6 +133,7 @@ VALUES
   ('451884-CARTON')
 )
 SELECT * FROM products;
+
 ![image](https://user-images.githubusercontent.com/89623051/140753147-822060d9-96a0-4dd2-aa6a-802c6a5f9b44.png)
 
 --Firstly we’ll want to find the POSITION of the - character so we can apply our LPAD function to the LEFT of our product_code column using the POSITION value and apply the padding transformation to add extra 0 characters in front of our number component.
@@ -184,6 +192,7 @@ VALUES
 SELECT text_value
 from test_data
 WHERE text_value LIKE 'Hello%';
+
 ![image](https://user-images.githubusercontent.com/89623051/140759466-860af6ff-13fd-413d-b077-044c4f16380c.png)
 
 2. Left '%' Wildcard
@@ -196,6 +205,7 @@ VALUES
 SELECT text_value
 from test_data
 WHERE text_value LIKE '%World!';
+
 ![image](https://user-images.githubusercontent.com/89623051/140759737-0b95517b-3df9-4b9f-b441-48f5c6f0530c.png)
 
 3. Double '%' Wildcard
@@ -209,6 +219,7 @@ VALUES
 SELECT text_value
 from test_data
 WHERE text_value LIKE '%ello World%';
+
 ![image](https://user-images.githubusercontent.com/89623051/140759894-ae9eb223-2b7f-4981-b2d1-ff75428133f9.png)
 
 4. Multiple '%' Wildcards
@@ -222,6 +233,7 @@ VALUES
 SELECT text_value
 from test_data
 WHERE text_value LIKE '%el%Wor%';
+
 ![image](https://user-images.githubusercontent.com/89623051/140760613-a8fc3647-2bf8-441b-9706-9c61af7fceaf.png)
 
 --'_' Wildcards
@@ -237,6 +249,7 @@ VALUES
 SELECT text_value
 from test_data
 WHERE text_value LIKE '_ello_World_';
+
 ![image](https://user-images.githubusercontent.com/89623051/140760998-6fd15bc4-6744-4267-9216-0394c2e35007.png)
 
 --Case Insensitive Match
@@ -251,6 +264,7 @@ VALUES
 SELECT text_value
 from test_data
 WHERE text_value ILIKE '%hello world%';
+
 ![image](https://user-images.githubusercontent.com/89623051/140761897-2d377190-2925-448c-b030-9fb60484e3a0.png)
 
 --NOT LIKE and NOT ILIKE
