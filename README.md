@@ -1,5 +1,6 @@
 # string_transformation
 --first N character
+
 SELECT LEFT('ABCDEFG', 3);
 
 ![image](https://user-images.githubusercontent.com/89623051/140747863-56c9b0d5-582d-4eca-8bdb-a08be858876a.png)
@@ -15,14 +16,17 @@ WHERE film_id = 14;
 ![image](https://user-images.githubusercontent.com/89623051/140748354-62fa6fd9-e07d-4872-b010-681bfdd2035b.png)
 
 ---last N characters
+
 SELECT RIGHT('ABCDEFG', 3);
 
 ---substring by position
+
 SELECT SUBSTRING('12345ABC9', 6, 3);
 
 ![image](https://user-images.githubusercontent.com/89623051/140748758-122814ee-0817-4f55-8f75-8e9f4d96c82d.png)
 
 --character length
+
 SELECT CHAR_LENGTH('123456789');
 
 --What is the max number of characters in the description field?
@@ -34,20 +38,24 @@ FROM rentals.film_list;
 ![image](https://user-images.githubusercontent.com/89623051/140749046-762ccd31-f1f7-4086-bf01-191211196fbe.png)
 
 ---starting position of text
+
 SELECT POSITION('a' in '12345a');
 
 ![image](https://user-images.githubusercontent.com/89623051/140749197-55f98ec1-a8b0-487b-87df-82610cbcbb5a.png)
 
 --What position does the word ‘Astronaut’ have in the description from the film called ANGELS LIFE?
+
 SELECT
   POSITION('Astronaut' IN description) AS starting_position
 FROM rentals.film
 WHERE title = 'ANGELS LIFE'
 
 --Convert to Lower Case
+
 select LOWER('ABC');
 
 --Using a CTE show the first 30 characters from the description and also the lower case version for film_id = 14
+
 WITH film_id_14
 AS
 (
@@ -77,6 +85,7 @@ FROM (
 ![image](https://user-images.githubusercontent.com/89623051/140750991-628d44cf-545c-4e81-9d58-e532a6999544.png)
 
 --title case
+
 select INITCAP('hello world!');
 
 ![image](https://user-images.githubusercontent.com/89623051/140751195-e04457e2-b77f-4ba3-aeef-7d94b6eb5911.png)
@@ -136,8 +145,7 @@ SELECT * FROM products;
 
 ![image](https://user-images.githubusercontent.com/89623051/140753147-822060d9-96a0-4dd2-aa6a-802c6a5f9b44.png)
 
---Firstly we’ll want to find the POSITION of the - character so we can apply our LPAD function to the LEFT of our product_code column using the POSITION value and apply the padding transformation to add extra 0 characters in front of our number component.
-
+--Firstly we’ll want to find the POSITION of the - character so we can apply our LPAD function to the LEFT of our product_code column using the POSITION value and apply the -----padding transformation to add extra 0 characters in front of our number component.
 --We can also subtract 1 from this POSITION value so we ensure we don’t include the - in our output!
 
 
@@ -183,6 +191,7 @@ WHERE text_value = 'Hello World!';
 --A wildcard percentage sign '%' character can be used to replace any number of characters in a string field and an underscore wildcard '_' can be used to replace any single ----character.
 
 1. Right '%' Wildcard
+
 WITH test_data (text_value) AS (
 VALUES
   ('Hello World!'),
@@ -196,6 +205,7 @@ WHERE text_value LIKE 'Hello%';
 ![image](https://user-images.githubusercontent.com/89623051/140759466-860af6ff-13fd-413d-b077-044c4f16380c.png)
 
 2. Left '%' Wildcard
+
 WITH test_data (text_value) AS (
 VALUES
   ('Hello World!'),
@@ -209,6 +219,7 @@ WHERE text_value LIKE '%World!';
 ![image](https://user-images.githubusercontent.com/89623051/140759737-0b95517b-3df9-4b9f-b441-48f5c6f0530c.png)
 
 3. Double '%' Wildcard
+
 WITH test_data (text_value) AS (
 VALUES
   ('Hello World!'),
@@ -223,6 +234,7 @@ WHERE text_value LIKE '%ello World%';
 ![image](https://user-images.githubusercontent.com/89623051/140759894-ae9eb223-2b7f-4981-b2d1-ff75428133f9.png)
 
 4. Multiple '%' Wildcards
+
 WITH test_data (text_value) AS (
 VALUES
   ('Hello World!'),
@@ -253,6 +265,7 @@ WHERE text_value LIKE '_ello_World_';
 ![image](https://user-images.githubusercontent.com/89623051/140760998-6fd15bc4-6744-4267-9216-0394c2e35007.png)
 
 --Case Insensitive Match
+
 WITH test_data (text_value) AS (
 VALUES
   ('Hello World!'),
@@ -268,6 +281,7 @@ WHERE text_value ILIKE '%hello world%';
 ![image](https://user-images.githubusercontent.com/89623051/140761897-2d377190-2925-448c-b030-9fb60484e3a0.png)
 
 --NOT LIKE and NOT ILIKE
+
 SELECT COUNT(*)
 FROM rentals.film_list
 WHERE description NOT ILIKE '%monkey%';
